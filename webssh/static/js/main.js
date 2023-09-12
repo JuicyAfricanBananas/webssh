@@ -368,10 +368,29 @@ jQuery(function($){
         termOptions = {
           cursorBlink: true,
           theme: {
-            background: url_opts_data.bgcolor || 'black',
-            foreground: url_opts_data.fontcolor || 'white',
+            foreground: "#ffffff",
+            background: "#000000",
+            cursor: "#ffffff",
+            cursorAccent: "#000000",
+            black: "#000000",
+            red: "#800000",
+            green: "#008000",
+            yellow: "#808000",
+            blue: "#000080",
+            magenta: "#800080",
+            cyan: "#008080",
+            white: "#c0c0c0",
+            brightBlack: "#808080",
+            brightRed: "#ff0000",
+            brightGreen: "#00ff00",
+            brightYellow: "#ffff00",
+            brightBlue: "#0000ff",
+            brightMagenta: "#ff00ff",
+            brightCyan: "#00ffff",
+            brightWhite: "#ffffff",
             cursor: url_opts_data.cursor || url_opts_data.fontcolor || 'white'
-          }
+          },
+          fontFamily: "Consolas, Monaco, 'Courier New', monospace",
         };
 
     if (url_opts_data.fontsize) {
@@ -747,7 +766,6 @@ jQuery(function($){
 
     return result;
   }
-
 
   function connect(hostname, port, username, password, privatekey, passphrase, totp) {
     // for console use
