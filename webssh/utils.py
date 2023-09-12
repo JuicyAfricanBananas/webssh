@@ -51,7 +51,7 @@ def is_valid_ip_address(ipstr):
 
 
 def is_valid_port(port):
-    return 0 < port < 65536
+    return 49152 < port < 65535
 
 
 def is_valid_encoding(encoding):

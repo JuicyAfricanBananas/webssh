@@ -365,12 +365,14 @@ class IndexHandler(MixinHandler, tornado.web.RequestHandler):
         value = self.get_value('hostname')
         if not (is_valid_hostname(value) or is_valid_ip_address(value)):
             raise InvalidValueError('Invalid hostname: {}'.format(value))
+        if value != "localhost":
+            raise InvalidValueError('Outbound connections are not allowed: {}'.format(value))
         return value
 
     def get_port(self):
         value = self.get_argument('port', u'')
         if not value:
-            return DEFAULT_PORT
+            raise InvalidValueError('A port is necessary.')
 
         port = to_int(value)
         if port is None or not is_valid_port(port):
@@ -392,13 +394,17 @@ class IndexHandler(MixinHandler, tornado.web.RequestHandler):
         port = self.get_port()
         username = self.get_value('username')
         password = self.get_argument('password', u'')
+        if password:
+            raise InvalidValueError('Connections with passwords are prohibited.')
         privatekey, filename = self.get_privatekey()
         passphrase = self.get_argument('passphrase', u'')
+        if passphrase:
+            raise InvalidValueError('Connections with passphrase are prohibited.')
         totp = self.get_argument('totp', u'')
-
+        if totp:
+            raise InvalidValueError('Connections with totp are prohibited.')
         if isinstance(self.policy, paramiko.RejectPolicy):
             self.lookup_hostname(hostname, port)
-
         if privatekey:
             pkey = PrivateKey(privatekey, passphrase, filename).get_pkey_obj()
         else:
