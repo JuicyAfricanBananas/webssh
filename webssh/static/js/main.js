@@ -46,7 +46,7 @@ jQuery(function($){
       title_element = document.querySelector('title'),
       form_id = '#connect',
       debug = document.querySelector(form_id).noValidate,
-      // custom_font = document.fonts ? document.fonts.values().next().value : undefined,
+      custom_font = null,
       default_fonts,
       DISCONNECTED = 0,
       CONNECTING = 1,
