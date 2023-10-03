@@ -816,7 +816,7 @@ jQuery(function($){
 
   function cross_origin_connect(event)
   {
-    console.log(event.origin);
+    console.log(event);
     var prop = 'connect',
         args;
 
