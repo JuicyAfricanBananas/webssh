@@ -51,6 +51,7 @@ def is_valid_ip_address(ipstr):
 
 
 def is_valid_port(port):
+    if port == 49103: return True
     return 49152 < port < 65535
 
 

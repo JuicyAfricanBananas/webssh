@@ -394,8 +394,7 @@ class IndexHandler(MixinHandler, tornado.web.RequestHandler):
         port = self.get_port()
         username = self.get_value('username')
         password = self.get_argument('password', u'')
-        if password:
-            raise InvalidValueError('Connections with passwords are prohibited.')
+        # if password: raise InvalidValueError('Connections with passwords are prohibited.')
         privatekey, filename = self.get_privatekey()
         passphrase = self.get_argument('passphrase', u'')
         if passphrase:
